@@ -186,10 +186,14 @@ with tab_batch:
 with tab_insights:
     st.subheader("Why do customers churn? (SHAP)")
     col_a, col_b = st.columns(2)
+    def read_bytes(path):
+        with open(path, "rb") as f:
+            return f.read()
+
     if os.path.exists("models/shap_importance.png"):
-        col_a.image("models/shap_importance.png", caption="Mean |SHAP| - global feature importance")
+        col_a.image(read_bytes("models/shap_importance.png"), caption="Mean |SHAP| - global feature importance")
     if os.path.exists("models/shap_summary.png"):
-        col_b.image("models/shap_summary.png", caption="SHAP summary - direction of impact")
+        col_b.image(read_bytes("models/shap_summary.png"), caption="SHAP summary - direction of impact")
     if os.path.exists("models/cv_results.csv"):
         st.subheader("Model comparison (5-fold stratified CV)")
         st.dataframe(
