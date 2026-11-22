@@ -51,3 +51,27 @@ Run `python train.py` and fill in your numbers here (see `models/cv_results.csv`
 | PR-AUC | _your value_ |
 | Recall (churn) | _your value_ |
 | Precision (churn) | _your value_ |
+## Results
+
+Best model: **Logistic Regression (class weights)**, decision threshold tuned on out-of-fold predictions.
+
+**5-fold stratified CV (training data)**
+
+| Model | ROC-AUC | PR-AUC | Recall | Precision | F1 |
+|---|---|---|---|---|---|
+| Logistic Regression (class weights) | 0.846 | 0.660 | 0.801 | 0.517 | 0.628 |
+| XGBoost (class weights) | 0.844 | 0.664 | 0.769 | 0.532 | 0.629 |
+| Random Forest (class weights) | 0.841 | 0.646 | 0.686 | 0.575 | 0.625 |
+
+**Held-out test set (1,409 customers)**
+
+| Metric (churn class) | Value |
+|---|---|
+| ROC-AUC | _see models/metadata.json_ |
+| Recall | 0.72 |
+| Precision | 0.54 |
+| F1 | 0.62 |
+
+Top churn drivers (SHAP): tenure, monthly charges, fiber-optic internet, month-to-month contract.
+
+![SHAP importance](models/shap_importance.png)
