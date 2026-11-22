@@ -11,7 +11,11 @@
   <img src="https://img.shields.io/badge/SHAP-Explainability-8A2BE2" alt="SHAP">
   <img src="https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?logo=mlflow&logoColor=white" alt="MLflow">
 </p>
+## 🚀 Live Demo
 
+Try the application here:
+
+[Telco Customer Churn Predictor](https://telco-churn-predictor45.streamlit.app/)
 ## Project overview
 
 Customer churn occurs when a customer stops using a company's service. Identifying customers who may leave can help a telecom retention team prioritise outreach and consider relevant retention actions.
