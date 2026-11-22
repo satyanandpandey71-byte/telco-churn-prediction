@@ -52,6 +52,25 @@ Confusion matrix at the chosen threshold: 271 of 374 churners were caught (232 f
 
 Test ROC-AUC (0.842) is very close to the cross-validation score (0.846), so the model generalises well and is not overfitting.
 
+
+## Model Outputs & Screenshots
+
+### 1. Single Customer Prediction
+Predicts individual customer churn probability, risk category, and recommended retention actions.
+
+### 2. Batch Customer Scoring
+Processes multiple customers through CSV upload and generates churn predictions.
+
+### 3. Model Insights & Explainability
+Includes SHAP feature importance, SHAP summary plots, and model comparison.
+
+### Output Files
+- `outputs/model_insights.pdf`
+- `outputs/batch_scoring.pdf`
+- `outputs/single_customer_prediction.pdf`
+- `outputs/churn_predictions.csv`
+
+
 ## Key churn drivers (SHAP)
 
 The most influential features are **tenure**, **monthly charges**, **total charges**, **fiber-optic internet service** and **month-to-month contracts**. See the SHAP summary plot for the direction of each effect.
