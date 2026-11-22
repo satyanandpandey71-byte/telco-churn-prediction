@@ -186,14 +186,22 @@ with tab_batch:
 with tab_insights:
     st.subheader("Why do customers churn? (SHAP)")
     col_a, col_b = st.columns(2)
-    def read_bytes(path):
+    def show_image(container, path, caption):
+        """Embed the PNG directly in the page (avoids Streamlit's media endpoint)."""
+        import base64
+
         with open(path, "rb") as f:
-            return f.read()
+            b64 = base64.b64encode(f.read()).decode()
+        container.markdown(
+            f'<img src="data:image/png;base64,{b64}" style="width:100%">'
+            f'<p style="text-align:center;color:gray;font-size:0.85em">{caption}</p>',
+            unsafe_allow_html=True,
+        )
 
     if os.path.exists("models/shap_importance.png"):
-        col_a.image(read_bytes("models/shap_importance.png"), caption="Mean |SHAP| - global feature importance")
+        show_image(col_a, "models/shap_importance.png", "Mean |SHAP| - global feature importance")
     if os.path.exists("models/shap_summary.png"):
-        col_b.image(read_bytes("models/shap_summary.png"), caption="SHAP summary - direction of impact")
+        show_image(col_b, "models/shap_summary.png", "SHAP summary - direction of impact")
     if os.path.exists("models/cv_results.csv"):
         st.subheader("Model comparison (5-fold stratified CV)")
         st.dataframe(
